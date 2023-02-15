@@ -1,0 +1,22 @@
+.itemDetail{
+    margin-top: 6%;
+}
+
+.itemDetailIMG{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 400px;
+}
+
+.quantityInput{
+    width: 180px !important;
+    color: gray;
+}
+
+.quantitySelect{
+    background-color: rgb(225, 225, 225);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
