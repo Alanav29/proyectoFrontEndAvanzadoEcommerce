@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import '../styles/ItemDetailStyles.css'
 import Option from '../utils/SelectOption'
+import { useForm } from 'react-hook-form'
 
 const ItemDetail = ({ items }) => {
   const { idProduct } = useParams()
@@ -16,6 +17,12 @@ const ItemDetail = ({ items }) => {
 
   setUnits(items[idProduct].quantity)
 
+  const { register, handleSubmit } = useForm()
+
+  const onSelect = (data) => {
+    console.log(data)
+  }
+
   return (
     <div className='container itemDetail'>
       <div className='m-0 p-0 mt-4 row'>
@@ -26,13 +33,15 @@ const ItemDetail = ({ items }) => {
           <h1>{items[idProduct].name}</h1>
           <h3 className='text-secondary'>$ {items[idProduct].price} MXN</h3>
           <p>{items[idProduct].description}</p>
-          <div className='quantityInput my-3'>
-            <select className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
-              <option value=''>Quantity</option>
-              {itemUnits}
-            </select>
-          </div>
-          <button className='btn btn-success'>Add to cart</button>
+          <form onSubmit={handleSubmit(onSelect)}>
+            <div className='quantityInput my-3'>
+              <select {...register('productQuantity')} className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
+                <option value='0'>Quantity</option>
+                {itemUnits}
+              </select>
+            </div>
+            <button type='submit' className='btn btn-success'>Add to cart</button>
+          </form>
         </div>
       </div>
 

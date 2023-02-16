@@ -1,5 +1,4 @@
 
-import './App.css'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import ItemDetail from './pages/ItemDetail'
@@ -31,7 +30,7 @@ function App () {
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/home' element={<Home items={items} />} />
+        <Route path='/' element={<Home items={items} />} />
         <Route path='/product/:idProduct' element={<ItemDetail items={items} />} />
       </Routes>
     </Router>

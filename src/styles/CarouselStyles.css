@@ -1,11 +1,4 @@
-.Carousel{
-    width: 50vw;
-}
-
-.Active{
-    display: block !important;
-}
-
-.CarouselItem{
-    display: none;
-}
+.carousel, .carousel-inner, .carousel-item > img {
+    height: 200px;
+    width: 400px;
+  }

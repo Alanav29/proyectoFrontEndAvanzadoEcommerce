@@ -7,11 +7,29 @@ import '../styles/CarouselStyles.css'
 
 const Carousel = () => {
   return (
-    <div className='container-fluid d-flex justify-content-center my-4'>
-      <div className='Carousel'>
-        <img id='carousel1' className='CarouselItem Active' src={Image1} />
-        <img id='carousel2' className='CarouselItem' src={Image2} />
-        <img id='carousel3' className='CarouselItem' src={Image3} />
+    <div className='d-flex justify-content-center my-4'>
+      <div id='carouselExampleInterval' className='carousel slide' data-bs-ride='carousel'>
+        <div className='carousel-inner'>
+          <div className='carousel-item active' data-bs-interval='{10000}'>
+            <img src={Image1} className='d-block' alt='...' />
+          </div>
+          <div className='carousel-item' data-bs-interval='{2000}'>
+            <img src={Image2} className='d-block' alt='...' />
+          </div>
+          <div className='carousel-item'>
+            <img src={Image3} className='d-block' alt='...' />
+          </div>
+        </div>
+        <button className='carousel-control-prev' type='button' data-bs-target='#carouselExampleInterval' data-bs-slide='prev'>
+          <span className='carousel-control-prev-icon' aria-hidden='true'>
+            <span className='visually-hidden'>Previous</span>
+          </span>
+        </button>
+        <button className='carousel-control-next' type='button' data-bs-target='#carouselExampleInterval' data-bs-slide='next'>
+          <span className='carousel-control-next-icon' aria-hidden='true'>
+            <span className='visually-hidden'>Next</span>
+          </span>
+        </button>
       </div>
     </div>
 
