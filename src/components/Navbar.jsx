@@ -1,11 +1,13 @@
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/NavbarStyles.css'
 
 // terminar Links
 // estilizar
 
-const Navbar = ({ items }) => {
+const Navbar = ({ items, onAction }) => {
+  const navigate = useNavigate()
+
   const { register, handleSubmit } = useForm()
 
   const searchItems = (data) => {
@@ -17,8 +19,9 @@ const Navbar = ({ items }) => {
       }
       return results
     })
+    onAction(resultsOfSearch)
     console.log(data)
-    console.log(resultsOfSearch)
+    navigate('/results')
   }
 
   return (

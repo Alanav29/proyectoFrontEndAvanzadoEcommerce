@@ -1,12 +1,12 @@
 
-import HomeProducts from '../components/ListOfProducts'
+import ListProducts from '../components/ListOfProducts'
 
-const ListOfProducts = ({ items }) => {
+const ResultOfSearch = ({ items }) => {
   return (
     <div>
-      <HomeProducts items={items} />
+      <ListProducts items={items} />
     </div>
   )
 }
 
-export default ListOfProducts
+export default ResultOfSearch

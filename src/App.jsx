@@ -35,13 +35,21 @@ function App () {
     console.log(cart)
   }
 
+  const [resultsOfNavbarSearch, setResultsOfNavbarSearch] = useState([])
+
+  const addToResultsOfNavbarSearch = (itemsResult) => {
+    // resultsOfNavbarSearch = itemsResult
+    console.log(resultsOfNavbarSearch)
+    setResultsOfNavbarSearch(itemsResult)
+  }
+
   return (
     <Router>
-      <Navbar items={items} />
+      <Navbar items={items} onAction={addToResultsOfNavbarSearch} />
       <Routes>
         <Route path='/' element={<Home items={items} />} />
         <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
-        <Route path='/results' element={<ResultsOfSearch items={items} />} />
+        <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
       </Routes>
     </Router>
   )
