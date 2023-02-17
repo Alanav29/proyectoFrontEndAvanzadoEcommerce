@@ -1,19 +1,35 @@
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import '../styles/NavbarStyles.css'
 
 // terminar Links
 // estilizar
 
-const Navbar = () => {
+const Navbar = ({ items }) => {
+  const { register, handleSubmit } = useForm()
+
+  const searchItems = (data) => {
+    const resultsOfSearch = items.filter((item) => {
+      let results
+      const itemsForSearchInLowerCase = data.itemForSearch.toLowerCase()
+      if (item.name.toLowerCase().includes(itemsForSearchInLowerCase)) {
+        results = item
+      }
+      return results
+    })
+    console.log(data)
+    console.log(resultsOfSearch)
+  }
+
   return (
     <nav className='navbar'>
       <div className='container-fluid justify-content-center'>
         <Link to='/'><div className='navbar-brand whiteText'>Store One</div></Link>
-        <form className='d-flex' role='search'>
-          <input className='form-control' type='search' placeholder='Search' aria-label='Search' />
+        <form className='d-flex' role='search' onSubmit={handleSubmit(searchItems)}>
+          <input {...register('itemForSearch')} className='form-control' type='search' placeholder='Search' aria-label='Search' />
           <button className='btn d-flex align-items-center whiteText' type='submit'>
             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-search' viewBox='0 0 16 16'>
-              <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z' />
+              <path d='M11.742 10.3445 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z' />
             </svg>
           </button>
         </form>

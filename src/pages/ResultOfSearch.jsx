@@ -1,14 +1,12 @@
 
-import Carousel from '../components/Carousel'
 import HomeProducts from '../components/ListOfProducts'
 
-const Home = ({ items }) => {
+const ListOfProducts = ({ items }) => {
   return (
     <div>
-      <Carousel />
       <HomeProducts items={items} />
     </div>
   )
 }
 
-export default Home
+export default ListOfProducts

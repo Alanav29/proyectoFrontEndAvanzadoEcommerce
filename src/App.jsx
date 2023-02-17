@@ -5,6 +5,7 @@ import ItemDetail from './pages/ItemDetail'
 import Image1 from './assets/itemTest.jpg'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
+import ResultsOfSearch from './pages/ResultOfSearch'
 
 function App () {
   const [items] = useState([
@@ -36,10 +37,11 @@ function App () {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar items={items} />
       <Routes>
         <Route path='/' element={<Home items={items} />} />
         <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
+        <Route path='/results' element={<ResultsOfSearch items={items} />} />
       </Routes>
     </Router>
   )
