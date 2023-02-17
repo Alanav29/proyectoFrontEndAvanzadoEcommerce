@@ -4,7 +4,7 @@ import '../styles/ItemDetailStyles.css'
 import Option from '../utils/SelectOption'
 import { useForm } from 'react-hook-form'
 
-const ItemDetail = ({ items }) => {
+const ItemDetail = ({ items, onAction }) => {
   const { idProduct } = useParams()
 
   const itemUnits = []
@@ -20,6 +20,7 @@ const ItemDetail = ({ items }) => {
   const { register, handleSubmit } = useForm()
 
   const onSelect = (data) => {
+    onAction(items[idProduct], items[idProduct].id, data.selectedQuantity)
     console.log(data)
   }
 
@@ -35,7 +36,7 @@ const ItemDetail = ({ items }) => {
           <p>{items[idProduct].description}</p>
           <form onSubmit={handleSubmit(onSelect)}>
             <div className='quantityInput my-3'>
-              <select {...register('productQuantity')} className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
+              <select {...register('selectedQuantity')} className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
                 <option value='0'>Quantity</option>
                 {itemUnits}
               </select>

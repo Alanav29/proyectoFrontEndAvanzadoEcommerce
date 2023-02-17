@@ -9,7 +9,7 @@ import { useState } from 'react'
 function App () {
   const [items] = useState([
     {
-      id: 1,
+      id: 0,
       img: Image1,
       name: 'Eames Chair',
       description: 'Minimalist design chair',
@@ -17,7 +17,7 @@ function App () {
       quantity: 10
     },
     {
-      id: 2,
+      id: 1,
       img: Image1,
       name: 'Eames 2',
       description: 'Minimalist design chair',
@@ -26,12 +26,20 @@ function App () {
     }
   ])
 
+  const cart = []
+
+  const addToCart = (item, itemId, quantityInCart) => {
+    const itemForCart = { itemInCart: item, productId: itemId, quantityInCart }
+    cart.push(itemForCart)
+    console.log(cart)
+  }
+
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home items={items} />} />
-        <Route path='/product/:idProduct' element={<ItemDetail items={items} />} />
+        <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
       </Routes>
     </Router>
   )
