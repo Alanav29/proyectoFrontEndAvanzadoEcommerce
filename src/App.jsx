@@ -38,7 +38,6 @@ function App () {
   const [resultsOfNavbarSearch, setResultsOfNavbarSearch] = useState([])
 
   const addToResultsOfNavbarSearch = (itemsResult) => {
-    // resultsOfNavbarSearch = itemsResult
     console.log(resultsOfNavbarSearch)
     setResultsOfNavbarSearch(itemsResult)
   }
