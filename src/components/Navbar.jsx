@@ -11,17 +11,19 @@ const Navbar = ({ items, onAction }) => {
   const { register, handleSubmit } = useForm()
 
   const searchItems = (data) => {
-    const resultsOfSearch = items.filter((item) => {
-      let results
-      const itemsForSearchInLowerCase = data.itemForSearch.toLowerCase()
-      if (item.name.toLowerCase().includes(itemsForSearchInLowerCase)) {
-        results = item
-      }
-      return results
-    })
-    onAction(resultsOfSearch)
-    console.log(data)
-    navigate('/results')
+    if (data.itemForSearch !== '') {
+      const resultsOfSearch = items.filter((item) => {
+        let results
+        const itemsForSearchInLowerCase = data.itemForSearch.toLowerCase()
+        if (item.name.toLowerCase().includes(itemsForSearchInLowerCase)) {
+          results = item
+        }
+        return results
+      })
+      onAction(resultsOfSearch)
+      console.log(data)
+      navigate('/results')
+    }
   }
 
   return (
