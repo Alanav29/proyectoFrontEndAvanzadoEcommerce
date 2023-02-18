@@ -2,3 +2,11 @@
     width: 100%;
     max-width: 200px;
 }
+
+.card-title{
+    color: black !important;
+}
+
+.card-title:hover{
+    text-decoration: underline;
+}

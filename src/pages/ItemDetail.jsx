@@ -21,7 +21,6 @@ const ItemDetail = ({ items, onAction }) => {
 
   const onSelect = (data) => {
     onAction(items[idProduct], items[idProduct].id, data.selectedQuantity)
-    console.log(data)
   }
 
   return (

@@ -5,3 +5,8 @@
 .whiteText{
     color: white !important;
 }
+
+.menuItem:hover{
+    color: rgb(98, 161, 179) !important;
+    cursor: pointer;
+}
