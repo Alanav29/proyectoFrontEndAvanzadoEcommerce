@@ -1,12 +1,12 @@
 
 import Carousel from '../components/Carousel'
-import HomeProducts from '../components/ListOfProducts'
+import ListOfProducts from '../components/ListOfProducts'
 
-const Home = ({ items }) => {
+const Home = ({ items, onAction }) => {
   return (
     <div>
       <Carousel />
-      <HomeProducts items={items} />
+      <ListOfProducts items={items} onAction={onAction} />
     </div>
   )
 }

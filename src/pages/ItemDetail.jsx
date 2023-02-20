@@ -11,7 +11,7 @@ const ItemDetail = ({ items, onAction }) => {
 
   const setUnits = (units) => {
     for (let i = 1; i <= units; i++) {
-      itemUnits.push(<Option key={i} unit={i} />)
+      itemUnits.push(<Option key={i} unit={parseInt(i)} />)
     }
   }
 
@@ -20,7 +20,7 @@ const ItemDetail = ({ items, onAction }) => {
   const { register, handleSubmit } = useForm()
 
   const onSelect = (data) => {
-    onAction(items[idProduct], items[idProduct].id, data.selectedQuantity)
+    onAction(items[idProduct], items[idProduct].id, parseInt(data.selectedQuantity))
   }
 
   return (
