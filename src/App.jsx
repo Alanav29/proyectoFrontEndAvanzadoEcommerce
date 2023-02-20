@@ -30,18 +30,17 @@ function App () {
     }
   ])
 
-  const cart = []
+  const [cart, setCart] = useState([])
 
   const addToCart = (item, itemId, quantityInCart) => {
     const itemToAddId = itemId
     const findItemInCart = cart.find(cartItem => cartItem.productId === itemToAddId)
-    console.log(findItemInCart)
     if (findItemInCart) {
       findItemInCart.quantityInCart += quantityInCart
       // console.log(cart)
     } else {
       const itemForCart = { itemInCart: item, productId: itemId, quantityInCart }
-      cart.push(itemForCart)
+      setCart(cart => [...cart, itemForCart])
       // console.log(cart)
     }
   }
@@ -55,7 +54,7 @@ function App () {
 
   return (
     <Router>
-      <Navbar items={items} onAction={addToResultsOfNavbarSearch} />
+      <Navbar items={items} onAction={addToResultsOfNavbarSearch} cart={cart} />
       <Routes>
         <Route path='/' element={<Home onAction={addToCart} items={items} />} />
         <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
