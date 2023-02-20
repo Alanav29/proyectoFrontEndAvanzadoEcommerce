@@ -1,8 +1,11 @@
 import React from 'react'
+import ItemCardForCart from '../components/ItemCardForCart'
 
-const Cart = () => {
+const Cart = ({ cart }) => {
   return (
-    <div>Cart</div>
+    <div className='container'>
+      <ItemCardForCart item={cart[0]} />
+    </div>
   )
 }
 

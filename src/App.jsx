@@ -61,7 +61,7 @@ function App () {
         <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
         <Route path='/signIn' element={<SignIn />} />
         <Route path='/signUp' element={<SignUp />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart' element={<Cart cart={cart} />} />
       </Routes>
     </Router>
   )
