@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Cart from './pages/Cart'
 import PostItem from './pages/PostItem'
+import { AuthProvider } from '@/context/AuthContext'
 
 function App () {
   const [items] = useState([
@@ -55,16 +56,18 @@ function App () {
 
   return (
     <Router>
-      <Navbar items={items} onAction={addToResultsOfNavbarSearch} cart={cart} />
-      <Routes>
-        <Route path='/' element={<Home onAction={addToCart} items={items} />} />
-        <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
-        <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
-        <Route path='/signIn' element={<SignIn />} />
-        <Route path='/signUp' element={<SignUp />} />
-        <Route path='/postItem' element={<PostItem />} />
-        <Route path='/cart' element={<Cart cart={cart} />} />
-      </Routes>
+      <AuthProvider>
+        <Navbar items={items} onAction={addToResultsOfNavbarSearch} cart={cart} />
+        <Routes>
+          <Route path='/' element={<Home onAction={addToCart} items={items} />} />
+          <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
+          <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
+          <Route path='/signIn' element={<SignIn />} />
+          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/postItem' element={<PostItem />} />
+          <Route path='/cart' element={<Cart cart={cart} />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   )
 }

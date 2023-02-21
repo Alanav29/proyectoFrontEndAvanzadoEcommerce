@@ -1,36 +1,36 @@
-// import { useContext } from 'react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-// import { AuthContext } from '../context/AuthContext'
-// import { useNavigate } from 'react-router-dom'
-// import { loginUser } from '../services/userServices'
+import { AuthContext } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from '../services/userServices'
 
 const SignIn = () => {
-  // const { login } = useContext(AuthContext)
-  // const navigate = useNavigate()
+  const { login } = useContext(AuthContext)
+  const navigate = useNavigate()
 
-  // const sendData = async (data) => {
-  //   try {
-  //     const result = await loginUser(data)
-  //     console.log(result)
-  //     if (result.status === 200) {
-  //       const token = result.data.token
-  //       // login(token)
-  //       console.log(token)
-  //       navigate('/')
-  //     }
-  //   } catch (error) {
+  const sendData = async (data) => {
+    try {
+      const result = await loginUser(data)
+      console.log(result)
+      if (result.status === 200) {
+        const token = result.data.token
+        login(token)
+        console.log(token)
+        navigate('/')
+      }
+    } catch (error) {
 
-  //   }
-  // }
+    }
+  }
 
-  const printUser = (data) => { console.log(data) }
+  // const printUser = (data) => { console.log(data) }
 
   const { register, handleSubmit } = useForm()
 
   return (
     <div className='container'>
       <h1 className='my-4'>Sign in</h1>
-      <form onSubmit={handleSubmit(printUser)}>
+      <form onSubmit={handleSubmit(sendData)}>
         <div className='mb-3'>
           <label htmlFor='emailInput' className='form-label'>Email address</label>
           <input

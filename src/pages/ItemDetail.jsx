@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import '../styles/ItemDetailStyles.css'
 import Option from '../utils/SelectOption'
 import { useForm } from 'react-hook-form'
+import { AuthContext } from '@/context/AuthContext'
 
 const ItemDetail = ({ items, onAction }) => {
+  const { isAuth } = useContext(AuthContext)
+  if (isAuth) { console.log(isAuth) } else { console.log('no autorizado') }
   const { idProduct } = useParams()
 
   const itemUnits = []
