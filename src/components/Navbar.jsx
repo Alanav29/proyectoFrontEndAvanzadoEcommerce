@@ -40,6 +40,7 @@ const Navbar = ({ items, onAction, cart }) => {
         </form>
         <Link to='/signIn'><div className='px-2 whiteText menuItem'>Sign in</div></Link>
         <Link to='/signUp'><div className='px-2 whiteText menuItem'>Sign up</div></Link>
+        <Link to='/postItem'><div className='px-2 whiteText menuItem'>Post item</div></Link>
         <Link className='d-flex mx-3' to='/cart'>
           <div className='whiteText me-1'>{`${cart.length}`}</div>
           <span className='whiteText menuItem'>
