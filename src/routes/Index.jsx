@@ -6,13 +6,14 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Cart from '../pages/Cart'
 import PostItem from '../pages/PostItem'
-import { AuthContext } from '@/context/AuthContext'
+// import { AuthContext } from '@/context/AuthContext'
 import { Routes, Route } from 'react-router-dom'
-import { useContext } from 'react'
+// import { useContext } from 'react'
 
 const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
-  const { isAuth } = useContext(AuthContext)
-  if (isAuth) { console.log(isAuth) } else { console.log('no autorizado') }
+  // const { isAuth, user } = useContext(AuthContext)
+  // if (isAuth) { console.log(isAuth) } else { console.log('no autorizado') }
+  // if (user) { console.log(user.role) }
 
   return (
     <Routes>

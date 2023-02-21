@@ -2,11 +2,14 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/NavbarStyles.css'
 import LogOut from './LogOut'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 // terminar Links
 // estilizar
 
 const Navbar = ({ items, onAction, cart }) => {
+  const { isAuth, user } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const { register, handleSubmit } = useForm()
@@ -27,6 +30,15 @@ const Navbar = ({ items, onAction, cart }) => {
     }
   }
 
+  let userSessionComponent
+  if (isAuth) {
+    if (user.role === 'ADMIN') {
+      userSessionComponent = <><LogOut /><Link to='/postItem'><div className='px-2 whiteText menuItem'>Post item</div></Link></>
+    } else { userSessionComponent = <LogOut /> }
+  } else {
+    userSessionComponent = <><Link to='/signIn'><div className='px-2 whiteText menuItem'>Sign in</div></Link><Link to='/signUp'><div className='px-2 whiteText menuItem'>Sign up</div></Link></>
+  }
+
   return (
     <nav className='navbar'>
       <div className='container-fluid justify-content-center'>
@@ -39,10 +51,7 @@ const Navbar = ({ items, onAction, cart }) => {
             </svg>
           </button>
         </form>
-        <Link to='/signIn'><div className='px-2 whiteText menuItem'>Sign in</div></Link>
-        <Link to='/signUp'><div className='px-2 whiteText menuItem'>Sign up</div></Link>
-        <LogOut />
-        <Link to='/postItem'><div className='px-2 whiteText menuItem'>Post item</div></Link>
+        {userSessionComponent}
         <Link className='d-flex mx-3' to='/cart'>
           <div className='whiteText me-1'>{`${cart.length}`}</div>
           <span className='whiteText menuItem'>

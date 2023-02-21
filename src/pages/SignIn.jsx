@@ -15,7 +15,6 @@ const SignIn = () => {
       if (result.status === 200) {
         const token = result.data.token
         login(token)
-        console.log(token)
         navigate('/')
       }
     } catch (error) {

@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext'
 const LogOut = () => {
   const { logout } = useContext(AuthContext)
   return (
-    <button onClick={logout}>LogOut</button>
+    <div className='px-2 whiteText menuItem' onClick={logout}>LogOut</div>
   )
 }
 
