@@ -2,16 +2,18 @@ import React from 'react'
 import ItemCardForCart from '../components/ItemCardForCart'
 
 const Cart = ({ cart }) => {
-  let component
+  let cartComponent
   if (cart.length) {
-    component = <ItemCardForCart item={cart[0]} />
+    cartComponent = cart.map((item) => (
+      <ItemCardForCart key={`cartItem${item.productId}`} item={item} />
+    ))
   } else {
-    component = <h1>Vacio</h1>
+    cartComponent = <h1>Vacio</h1>
   }
 
   return (
     <div className='container'>
-      {component}
+      {cartComponent}
     </div>
   )
 }

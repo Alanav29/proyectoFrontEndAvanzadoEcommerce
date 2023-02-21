@@ -6,23 +6,27 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Cart from '../pages/Cart'
 import PostItem from '../pages/PostItem'
-// import { AuthContext } from '@/context/AuthContext'
+import { AuthContext } from '@/context/AuthContext'
 import { Routes, Route } from 'react-router-dom'
-// import { useContext } from 'react'
+import { useContext } from 'react'
 
 const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
-  // const { isAuth, user } = useContext(AuthContext)
-  // if (isAuth) { console.log(isAuth) } else { console.log('no autorizado') }
-  // if (user) { console.log(user.role) }
+  const { isAuth, user } = useContext(AuthContext)
+  let userSessionComponent
+  if (isAuth) {
+    if (user.role === 'ADMIN') {
+      userSessionComponent = <Route path='/postItem' element={<PostItem />} />
+    } else { userSessionComponent = <></> }
+  } else {
+    userSessionComponent = <><Route path='/signIn' element={<SignIn />} /><Route path='/signUp' element={<SignUp />} /></>
+  }
 
   return (
     <Routes>
       <Route path='/' element={<Home onAction={addToCart} items={items} />} />
       <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} items={items} />} />
       <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
-      <Route path='/signIn' element={<SignIn />} />
-      <Route path='/signUp' element={<SignUp />} />
-      <Route path='/postItem' element={<PostItem />} />
+      {userSessionComponent}
       <Route path='/cart' element={<Cart cart={cart} />} />
     </Routes>
   )
