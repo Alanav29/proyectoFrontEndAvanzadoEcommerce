@@ -22,8 +22,6 @@ const SignIn = () => {
     }
   }
 
-  // const printUser = (data) => { console.log(data) }
-
   const { register, handleSubmit } = useForm()
 
   return (
@@ -31,22 +29,22 @@ const SignIn = () => {
       <h1 className='my-4'>Sign in</h1>
       <form onSubmit={handleSubmit(sendData)}>
         <div className='mb-3'>
-          <label htmlFor='emailInput' className='form-label'>Email address</label>
+          <label htmlFor='signInEmailInput' className='form-label'>Email address</label>
           <input
             type='email'
             className='form-control'
-            id='emailInput'
+            id='signInEmailInput'
             {...register('email')}
             placeholder='name@example.com'
           />
           <div id='emailHelp' className='form-text'>We'll never share your email with anyone else.</div>
         </div>
         <div className='mb-3'>
-          <label htmlFor='passwordInput' className='form-label'>Password</label>
+          <label htmlFor='signInPasswordInput' className='form-label'>Password</label>
           <input
             type='password'
             className='form-control'
-            id='passwordInput'
+            id='signInPasswordInput'
             {...register('password')}
             placeholder='Password'
           />

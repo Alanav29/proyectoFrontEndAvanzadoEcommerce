@@ -15,5 +15,6 @@ axios.interceptors.request.use((config) => {
 })
 
 const loginUser = (data) => axios.post(`${BASE_URL}/login`, data)
+const registerUser = (data) => axios.post(`${BASE_URL}/register`, data)
 
-export { loginUser }
+export { loginUser, registerUser }
