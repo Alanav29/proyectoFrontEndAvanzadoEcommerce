@@ -2,9 +2,9 @@
 // import Home from './pages/Home'
 import Navbar from './components/Navbar'
 // import ItemDetail from './pages/ItemDetail'
-import Image1 from './assets/itemTest.jpg'
+// import Image1 from './assets/itemTest.jpg'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import ResultsOfSearch from './pages/ResultOfSearch'
 // import SignIn from './pages/SignIn'
 // import SignUp from './pages/SignUp'
@@ -12,26 +12,24 @@ import { useState } from 'react'
 // import PostItem from './pages/PostItem'
 import { AuthProvider } from '@/context/AuthContext'
 import Index from './routes/Index'
+import { getAllItems } from './services/itemServices'
 
 function App () {
-  const [items] = useState([
-    {
-      id: 0,
-      img: Image1,
-      name: 'Eames Chair',
-      description: 'Minimalist design chair',
-      price: 100,
-      quantity: 10
-    },
-    {
-      id: 1,
-      img: Image1,
-      name: 'Eames 2',
-      description: 'Minimalist design chair',
-      price: 200,
-      quantity: 10
+  const [items, setItems] = useState([])
+  useEffect(() => {
+    // Traigo mis items de la API y los almaceno en el estado itemsData
+    const fetchItemsData = async () => {
+      try {
+        const result = await getAllItems()
+        if (result.status === 200) {
+          setItems(result.data)
+        }
+      } catch (error) {
+        console.log('Ocurrio un error al procesar los Items: ', error.message)
+      }
     }
-  ])
+    fetchItemsData()
+  }, [])
 
   const [cart, setCart] = useState([])
 

@@ -7,10 +7,11 @@ const ItemCard = ({ item, onAction }) => {
 
   return (
     <div className='card m-3 itemCard'>
-      <img src={item.img} className='card-img-top' item={item} alt='itemIMG' />
+      <img src={item.image} className='card-img-top' alt='itemIMG' />
       <div className='card-body'>
-        <Link to={`/product/${item.id}`}><h5 className='card-title'>{item.name}</h5></Link>
-        <p className='card-text'>SKU {item.id}</p>
+        <Link to={`/product/${item.id}`}><h5 className='card-title'>{item.product_name}</h5></Link>
+        <p className='card-text mb-1'>Brand</p>
+        <p className='card-text'>{item.brand}</p>
         <p className='card-text'>${item.price}</p>
         <button onClick={singleAddToCart} className='btn btn-primary d-flex justify-content-center align-items-center'>
           <div className='px-2'>
