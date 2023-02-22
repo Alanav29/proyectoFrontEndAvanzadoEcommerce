@@ -19,13 +19,16 @@ const Navbar = ({ items, onAction, cart }) => {
       const resultsOfSearch = items.filter((item) => {
         let results
         const itemsForSearchInLowerCase = data.itemForSearch.toLowerCase()
-        if (item.product_name.toLowerCase().includes(itemsForSearchInLowerCase)) {
-          results = item
+        let itemName = item.product_name
+        if (itemName) {
+          itemName = itemName.toLowerCase()
+          if (itemName.includes(itemsForSearchInLowerCase)) {
+            results = item
+          }
         }
         return results
       })
       onAction(resultsOfSearch)
-      console.log(data)
       navigate('/results')
     }
   }
