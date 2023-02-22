@@ -14,6 +14,7 @@ const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
   const { isAuth, user } = useContext(AuthContext)
   let userSessionComponent
   if (isAuth) {
+    console.log(user)
     if (user.role === 'ADMIN') {
       userSessionComponent = <Route path='/postItem' element={<PostItem />} />
     } else { userSessionComponent = <></> }
