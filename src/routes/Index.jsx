@@ -28,7 +28,7 @@ const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
       <Route path='/product/:idProduct' element={<ItemDetail onAction={addToCart} />} />
       <Route path='/results' element={<ResultsOfSearch items={resultsOfNavbarSearch} />} />
       {userSessionComponent}
-      <Route path='/cart' element={<Cart cart={cart} />} />
+      <Route path='/cart' element={<Cart cart={cart} onAction={addToCart} />} />
     </Routes>
   )
 }

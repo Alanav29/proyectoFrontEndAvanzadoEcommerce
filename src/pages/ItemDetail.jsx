@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import '../styles/ItemDetailStyles.css'
 import Option from '../utils/SelectOption'
 import { useForm } from 'react-hook-form'
 import { getSingleItem } from '../services/itemServices'
+import { AuthContext } from '../context/AuthContext'
 
 const ItemDetail = ({ onAction }) => {
+  const { isAuth } = useContext(AuthContext)
   const { idProduct } = useParams()
+
   const [item, setItem] = useState({})
+
   useEffect(() => {
     const fetchItemData = async () => {
       try {
@@ -38,6 +42,22 @@ const ItemDetail = ({ onAction }) => {
     onAction(item, item.id, parseInt(data.selectedQuantity))
   }
 
+  const componentLinkToSignIn = <Link to='/signIn'><button className='btn btn-success'>Sign in for add to cart</button></Link>
+
+  const componentFormToAddToCart = (
+    <form onSubmit={handleSubmit(onSelect)}>
+      <div className='quantityInput my-3'>
+        <select {...register('selectedQuantity')} className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
+          <option value='0'>Quantity</option>
+          {itemUnits}
+        </select>
+      </div>
+      <button type='submit' className='btn btn-success'>Add to cart</button>
+    </form>
+  )
+
+  const selectedComponentToShow = () => { if (isAuth) { return componentFormToAddToCart } else { return componentLinkToSignIn } }
+
   return (
     <div className='container itemDetail'>
       <div className='m-0 p-0 mt-4 row'>
@@ -48,15 +68,7 @@ const ItemDetail = ({ onAction }) => {
           <h1>{item.product_name}</h1>
           <h3 className='text-secondary'>$ {item.price} MXN</h3>
           <p>{item.description}</p>
-          <form onSubmit={handleSubmit(onSelect)}>
-            <div className='quantityInput my-3'>
-              <select {...register('selectedQuantity')} className='quantitySelect p-2' id={`quantityItem${idProduct}`}>
-                <option value='0'>Quantity</option>
-                {itemUnits}
-              </select>
-            </div>
-            <button type='submit' className='btn btn-success'>Add to cart</button>
-          </form>
+          {selectedComponentToShow()}
         </div>
       </div>
 
