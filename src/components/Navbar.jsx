@@ -36,8 +36,8 @@ const Navbar = ({ items, onAction, cart, eraseCart }) => {
   let userSessionComponent
   if (isAuth) {
     if (user.role === 'ADMIN') {
-      userSessionComponent = <><Link to='/'><LogOut eraseCart={eraseCart} /></Link><Link to='/postItem'><div className='px-2 whiteText menuItem'>Post item</div></Link></>
-    } else { userSessionComponent = <Link to='/'><LogOut eraseCart={eraseCart} /></Link> }
+      userSessionComponent = <><Link to='/'><LogOut cart={cart} eraseCart={eraseCart} /></Link><Link to='/postItem'><div className='px-2 whiteText menuItem'>Post item</div></Link></>
+    } else { userSessionComponent = <Link to='/'><LogOut cart={cart} eraseCart={eraseCart} /></Link> }
   } else {
     userSessionComponent = <><Link to='/signIn'><div className='px-2 whiteText menuItem'>Sign in</div></Link><Link to='/signUp'><div className='px-2 whiteText menuItem'>Sign up</div></Link></>
   }

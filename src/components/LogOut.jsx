@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
-const LogOut = ({ eraseCart }) => {
-  const { logout } = useContext(AuthContext)
+const LogOut = ({ eraseCart, cart }) => {
+  const { logout, user } = useContext(AuthContext)
   const completeLogout = () => {
+    if (cart.length > 0) { window.localStorage.setItem(`${user.id}`, JSON.stringify(cart)) }
     logout()
     eraseCart()
   }
