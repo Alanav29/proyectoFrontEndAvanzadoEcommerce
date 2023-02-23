@@ -13,6 +13,7 @@ import { useContext } from 'react'
 const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
   const { isAuth, user } = useContext(AuthContext)
   let userSessionComponent
+  console.log(user)
   if (isAuth) {
     console.log(user)
     if (user.role === 'ADMIN') {

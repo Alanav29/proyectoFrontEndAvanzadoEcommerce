@@ -8,6 +8,7 @@ import { getAllItems } from './services/itemServices'
 
 function App () {
   const [items, setItems] = useState([])
+
   useEffect(() => {
     const fetchItemsData = async () => {
       try {
@@ -37,6 +38,8 @@ function App () {
     }
   }
 
+  const eraseCart = () => { setCart([]) }
+
   const [resultsOfNavbarSearch, setResultsOfNavbarSearch] = useState([])
 
   const addToResultsOfNavbarSearch = (itemsResult) => {
@@ -47,7 +50,7 @@ function App () {
   return (
     <Router>
       <AuthProvider>
-        <Navbar items={items} onAction={addToResultsOfNavbarSearch} cart={cart} />
+        <Navbar items={items} eraseCart={eraseCart} onAction={addToResultsOfNavbarSearch} cart={cart} />
         <Index items={items} addToCart={addToCart} resultsOfNavbarSearch={resultsOfNavbarSearch} cart={cart} />
       </AuthProvider>
     </Router>

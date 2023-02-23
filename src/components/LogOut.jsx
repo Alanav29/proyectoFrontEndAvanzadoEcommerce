@@ -1,10 +1,15 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
-const LogOut = () => {
+const LogOut = ({ eraseCart }) => {
   const { logout } = useContext(AuthContext)
+  const completeLogout = () => {
+    logout()
+    eraseCart()
+  }
+
   return (
-    <div className='px-2 whiteText menuItem' onClick={logout}>LogOut</div>
+    <div className='px-2 whiteText menuItem' onClick={completeLogout}>LogOut</div>
   )
 }
 
