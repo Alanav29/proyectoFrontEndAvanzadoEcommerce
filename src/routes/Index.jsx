@@ -10,17 +10,16 @@ import { AuthContext } from '@/context/AuthContext'
 import { Routes, Route } from 'react-router-dom'
 import { useContext } from 'react'
 
-const Index = ({ addToCart, items, cart, resultsOfNavbarSearch }) => {
-  const { isAuth, user } = useContext(AuthContext)
+const Index = ({ addToCart, items, cart, resultsOfNavbarSearch, setCart }) => {
+  const { isAuth, user, userEmail } = useContext(AuthContext)
   let userSessionComponent
-  console.log(user)
   if (isAuth) {
-    console.log(user)
+    console.log(userEmail)
     if (user.role === 'ADMIN') {
       userSessionComponent = <Route path='/postItem' element={<PostItem />} />
     } else { userSessionComponent = <></> }
   } else {
-    userSessionComponent = <><Route path='/signIn' element={<SignIn />} /><Route path='/signUp' element={<SignUp />} /></>
+    userSessionComponent = <><Route path='/signIn' element={<SignIn setCart={setCart} />} /><Route path='/signUp' element={<SignUp />} /></>
   }
 
   return (

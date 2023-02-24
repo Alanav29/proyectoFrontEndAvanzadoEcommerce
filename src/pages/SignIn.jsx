@@ -4,17 +4,18 @@ import { AuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../services/userServices'
 
-const SignIn = () => {
+const SignIn = ({ setCart }) => {
   const { login } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const sendData = async (data) => {
     try {
       const result = await loginUser(data)
-      console.log(result)
+      console.log(data)
       if (result.status === 200) {
         const token = result.data.token
-        login(token)
+        login(token, data.email)
+        setCart(JSON.parse(window.localStorage.getItem(`${data.email}`)))
         navigate('/')
       }
     } catch (error) {

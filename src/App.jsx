@@ -51,7 +51,7 @@ function App () {
     <Router>
       <AuthProvider>
         <Navbar items={items} eraseCart={eraseCart} onAction={addToResultsOfNavbarSearch} cart={cart} />
-        <Index items={items} addToCart={addToCart} resultsOfNavbarSearch={resultsOfNavbarSearch} cart={cart} />
+        <Index items={items} addToCart={addToCart} setCart={setCart} resultsOfNavbarSearch={resultsOfNavbarSearch} cart={cart} />
       </AuthProvider>
     </Router>
   )

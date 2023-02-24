@@ -8,20 +8,23 @@ export const AuthProvider = (props) => {
   // Estoy autenticado o no?
   const [isAuth, setIsAuth] = useState(false)
   const [user, setUser] = useState(null) // info usuario
+  const [userEmail, setUserEmail] = useState(null)
 
-  const login = (token) => {
+  const login = (token, email) => {
     // Guardar el token en localstorage del navegador
     window.localStorage.setItem('token', token)
     const decoded = jwt_decode(token)
     // Descodifica el token
     setUser(decoded)
     setIsAuth(true)
+    setUserEmail(email)
   }
 
   const logout = () => {
     window.localStorage.removeItem('token')
     setIsAuth(false)
     setUser(null)
+    setUserEmail(null)
   }
 
   useEffect(() => {
@@ -37,6 +40,7 @@ export const AuthProvider = (props) => {
   const values = {
     isAuth,
     user,
+    userEmail,
     login,
     logout
   }
