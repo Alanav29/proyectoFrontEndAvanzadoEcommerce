@@ -1,19 +1,17 @@
-import Image1 from '../assets/serie1.jpg'
-import Image2 from '../assets/serie2.jpg'
-import Image3 from '../assets/serie3.jpg'
+import Image1 from '../assets/banner1.jpg'
+import Image2 from '../assets/banner2.jpg'
+import Image3 from '../assets/banner3.jpg'
 import '../styles/CarouselStyles.css'
-
-// Terminar funcionalidad
 
 const Carousel = () => {
   return (
     <div className='d-flex justify-content-center my-4'>
       <div id='carouselExampleInterval' className='carousel slide' data-bs-ride='carousel'>
         <div className='carousel-inner'>
-          <div className='carousel-item active' data-bs-interval='{10000}'>
+          <div className='carousel-item active' data-bs-interval='{500}'>
             <img src={Image1} className='d-block' alt='...' />
           </div>
-          <div className='carousel-item' data-bs-interval='{2000}'>
+          <div className='carousel-item' data-bs-interval='{500}'>
             <img src={Image2} className='d-block' alt='...' />
           </div>
           <div className='carousel-item'>

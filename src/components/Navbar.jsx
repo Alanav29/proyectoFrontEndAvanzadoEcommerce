@@ -5,7 +5,6 @@ import LogOut from './LogOut'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
-// terminar Links
 // estilizar
 
 const Navbar = ({ items, onAction, cart, eraseCart }) => {

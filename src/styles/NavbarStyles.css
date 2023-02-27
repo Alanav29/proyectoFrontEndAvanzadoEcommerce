@@ -1,5 +1,10 @@
+:root{
+    --generalColor--: rgb(29, 161, 184);
+}
+
 .navbar {
-    background-color: rgb(123, 206, 230) !important;
+    height: auto !important;
+    background-color: var(--generalColor--) !important;
 }
 
 .whiteText{
@@ -9,4 +14,8 @@
 .menuItem:hover{
     color: rgb(98, 161, 179) !important;
     cursor: pointer;
+}
+
+.navbar-brand{
+    font-size: 24px !important;
 }

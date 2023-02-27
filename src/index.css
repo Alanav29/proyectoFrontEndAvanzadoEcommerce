@@ -1,3 +1,7 @@
+html{
+    font-size: 100% !important;
+}
+
 a{
     text-decoration: none;
 }
@@ -5,3 +9,8 @@ a{
 .btn:active{
     transform: translate(-1px,1px);
 }
+
+body{
+    font-size: 24px !important;
+}
+

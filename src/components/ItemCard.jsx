@@ -10,7 +10,7 @@ const ItemCard = ({ item }) => {
     <div className='card m-3 itemCard'>
       <img src={item.image} className='card-img-top' alt='itemIMG' />
       <div className='card-body'>
-        <Link to={`/product/${item.id}`}><h5 className='card-title'>{item.product_name}</h5></Link>
+        <Link to={`/product/${item.id}`}><p className='card-title fw-semibold'>{item.product_name}</p></Link>
         <p className='card-text mb-1'>Brand</p>
         <p className='card-text'>{item.brand}</p>
         <p className='card-text'>${item.price}</p>

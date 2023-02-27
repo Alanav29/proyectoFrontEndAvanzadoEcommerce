@@ -1,7 +1,5 @@
 
-// import Image1 from '../assets/itemTest.jpg'
 import '../styles/ItemCardForCartStyles.css'
-// import { useForm } from 'react-hook-form'
 import Option from '../utils/SelectOption'
 
 const ItemCardForCart = ({ item, onAction }) => {
